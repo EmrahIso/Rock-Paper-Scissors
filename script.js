@@ -8,3 +8,20 @@
 // 5. If the choices are the same, restart the round and write a tie in the console
 // 6. Else return a string that declares the winner of the round
 // 7. Write a function game() and use the previous function inside of this one to play a best-of-five game that keeps score and reports a winner or loser at the end
+
+
+
+function getComputerChoice() {
+    let computerSelection;
+    let randomNumber = Math.floor(Math.random() * 10);
+    if(randomNumber < 4) {
+        computerSelection = 'ROCK';
+    } else if(randomNumber <= 7) {
+        computerSelection = 'PAPER';
+    } else {
+        computerSelection = 'SCISSORS';
+    }
+    return computerSelection;
+}
+
+console.log(getComputerChoice());
