@@ -13,8 +13,6 @@ function getPlayerChoice() {
     return  prompt('Enter rock or paper or scissors').toUpperCase();
 }
 
-const playerSelection = getPlayerChoice();
-
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 10);
     if(randomNumber <= 3) {
@@ -26,13 +24,12 @@ function getComputerChoice() {
     }
 }
 
-const computerSelection = getComputerChoice();
-
 function playRound(playerSelection, computerSelection) {
     if(playerSelection === computerSelection) {
-        alert('Tie, try another one');
-        let newPlayerSelection = getPlayerChoice();
-        return playRound(newPlayerSelection, computerSelection);
+        console.log('Tie, try another one');
+        const newPlayerSelection = getPlayerChoice();
+        const newComputerSelection = getComputerChoice();
+        return playRound(newPlayerSelection, newComputerSelection);
     } else if(playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
         return 'You Won! Rock beats Scissors';
     } else if(playerSelection === 'PAPER' && computerSelection === 'ROCK') {
@@ -48,4 +45,31 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+
+
+function game() {
+    let userScore = 0;
+    let computerScore = 0;
+    for(let i = 0; i < 5; i++) {
+       let playerSelection = getPlayerChoice();
+       let computerSelection = getComputerChoice();
+       const message = playRound(playerSelection, computerSelection);
+       console.log(message);
+       if(message.includes('Won')) {
+        userScore++;
+       } else if(message.includes('Lose')) {
+        computerScore++;
+       }
+       console.log('User score: ' + userScore);
+       console.log('Computer score: ' + computerScore);
+    }
+    if(userScore > computerScore) {
+        return 'You won the game';
+    } else if(userScore < computerScore) {
+        return 'You lose the game';
+    } else {
+        return 'Draw';
+    }
+}
+
+console.log(game());
