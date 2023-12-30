@@ -9,11 +9,11 @@
 // 6. Else return a string that declares the winner of the round
 // 7. Write a function game() and use the previous function inside of this one to play a best-of-five game that keeps score and reports a winner or loser at the end
 
-function getPlayerChoice() {
-    const playerSelection = prompt('Enter rock or paper or scissors').toUpperCase();
-    return playerSelection;
+function getPlayerChoice() { 
+    return  prompt('Enter rock or paper or scissors').toUpperCase();
 }
-console.log(getPlayerChoice());
+
+const playerSelection = getPlayerChoice();
 
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 10);
@@ -27,5 +27,25 @@ function getComputerChoice() {
 }
 
 const computerSelection = getComputerChoice();
-console.log(computerSelection);
 
+function playRound(playerSelection, computerSelection) {
+    if(playerSelection === computerSelection) {
+        alert('Tie, try another one');
+        let newPlayerSelection = getPlayerChoice();
+        return playRound(newPlayerSelection, computerSelection);
+    } else if(playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
+        return 'You Won! Rock beats Scissors';
+    } else if(playerSelection === 'PAPER' && computerSelection === 'ROCK') {
+        return 'You Won! Paper beats Rock';
+    } else if(playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+        return 'You Won! Scissors beats Paper';
+    } else if(playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+        return 'You Lose! Paper beats Rock';
+    } else if(playerSelection === 'PAPER' && computerSelection === 'SCISSORS') {
+        return 'You Lose! Scissors beats Paper';
+    } else if(playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
+        return 'You Lose! Rock beats Scissors';
+    }
+}
+
+console.log(playRound(playerSelection, computerSelection));
