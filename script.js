@@ -10,6 +10,8 @@
 // 7. Write a function game() and use the previous function inside of this one to play a best-of-five game that keeps score and reports a winner or loser at the end
 
 
+let playerSelection = prompt('Enter rock or paper or scissors').toUpperCase();
+console.log(playerSelection);
 
 function getComputerChoice() {
     let computerSelection;
