@@ -9,15 +9,17 @@
 // 6. Else return a string that declares the winner of the round
 // 7. Write a function game() and use the previous function inside of this one to play a best-of-five game that keeps score and reports a winner or loser at the end
 
-
-const playerSelection = prompt('Enter rock or paper or scissors').toUpperCase();
-console.log(playerSelection);
+function getPlayerChoice() {
+    const playerSelection = prompt('Enter rock or paper or scissors').toUpperCase();
+    return playerSelection;
+}
+console.log(getPlayerChoice());
 
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 10);
-    if(randomNumber < 4) {
+    if(randomNumber <= 3) {
         return 'ROCK';
-    } else if(randomNumber <= 7) {
+    } else if(randomNumber <= 6) {
         return 'PAPER';
     } else {
         return 'SCISSORS';
@@ -25,7 +27,5 @@ function getComputerChoice() {
 }
 
 const computerSelection = getComputerChoice();
-
-
 console.log(computerSelection);
 
